@@ -8,5 +8,7 @@ public class Main {
         ExpDAO.getAllExpenses();
 
         ExpDAO.getTotalExpenseAmount();
+
+        ExpDAO.removeExpense(20);
     }
 }
