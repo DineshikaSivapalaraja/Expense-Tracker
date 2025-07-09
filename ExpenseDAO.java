@@ -32,7 +32,7 @@ public class ExpenseDAO {
 
         ) {
             while (rs.next()) {
-                System.out.printf("ID: %d Description: %s Amount: %.2f Date: %s",
+                System.out.printf("ID: %d Description: %s Amount: %.2f Date: %s\n",
                     rs.getInt("id"),
                     rs.getString("description"),
                     rs.getDouble("amount"),
@@ -46,4 +46,23 @@ public class ExpenseDAO {
         }
         
     }
+
+    //3. get total amount of the expenses
+    public double getTotalExpenseAmount(){
+        String sql = "SELECT SUM(amount) as total FROM expenses";
+        try(Connection conn = DBConnection.getConnection();
+            Statement stat = conn.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+        )
+        {
+            if(rs.next()) {
+                System.out.println("Total amount of expense is: "+ rs.getDouble("total"));
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0.0;
+    }
+
 }

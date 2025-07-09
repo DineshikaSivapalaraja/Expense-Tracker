@@ -6,5 +6,7 @@ public class Main {
         ExpDAO.addExpense("Academic fee", 375000.00, "2025-07-01");
 
         ExpDAO.getAllExpenses();
+
+        ExpDAO.getTotalExpenseAmount();
     }
 }
